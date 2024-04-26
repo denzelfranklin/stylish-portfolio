@@ -1,0 +1,931 @@
+// variables
+$button-color:rgba(53, 87, 199, 0.897);
+$first-color:blue;
+$second-color:white;
+
+
+*{
+    margin: 0;
+padding: 0;
+
+}
+@font-face {
+    font-family: sans-serif;
+    src: url(SourceSans3-Regular.ttf);
+}
+ body{
+    font-family:sans-serif;
+}
+.banner1{
+    background-image: url(bg-masthead.jpg);
+    background-size:cover;
+    height: 100vh;
+    width: 100%;
+    background-position: left center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+
+    h1{
+        font-size: 50px;
+        padding: 5px;
+    }
+    .para1{
+        font-weight: bold;
+    }
+    .button1{
+        text-decoration: none;
+        background-color: $button-color;
+        color: white;
+        padding: 10px;
+        margin-top: 20px;
+        border: $button-color;
+        border-radius: 3px 3px 3px 3px;
+    }
+}
+.wrapper{
+    position: fixed;
+    top: 0;
+    /*left: -100%;*/
+    right: -100%;
+    height: 100%;
+    width: 100%;
+    background: #1d809f;
+    /*background: linear-gradient(90deg, #f92c78, #4114a1);*/
+    /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+   /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%);*/
+    transition: all 0.6s ease-in-out;
+  }
+  #active:checked ~ .wrapper{
+    /*left: 0;*/
+    right:0;
+  }
+  .menu-btn{
+    position: absolute;
+    z-index: 2;
+    right: 20px;
+    /*left: 20px; */
+    top: 20px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    /*color: #fff;*/
+    /*background: linear-gradient(90deg, #f92c78, #4114a1);*/
+    /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+   /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%); */
+    transition: all 0.3s ease-in-out;
+  }
+  .menu-btn span,
+  .menu-btn:before,
+  .menu-btn:after{
+      content: "";
+      position: absolute;
+      top: calc(50% - 1px);
+      left: 30%;
+      width: 40%;
+      border-bottom: 2px solid #000;
+      transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  .menu-btn:before{
+    transform: translateY(-8px);
+  }
+  .menu-btn:after{
+    transform: translateY(8px);
+  }
+  
+  
+  .close {
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      transition: background .6s;
+  }
+  
+  /* closing animation */
+  #active:checked + .menu-btn span {
+      transform: scaleX(0);
+  }
+  #active:checked + .menu-btn:before {
+      transform: rotate(45deg);
+    border-color: #fff;
+  }
+  #active:checked + .menu-btn:after {
+      transform: rotate(-45deg);
+    border-color: #fff;
+  }
+  .wrapper ul{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    height: 90%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+  }
+  .wrapper ul li{
+    height: 10%;
+    margin: 15px 0;
+  }
+  .wrapper ul li a{
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 5px 30px;
+    color: #fff;
+    border-radius: 50px;
+    position: absolute;
+    line-height: 50px;
+    margin: 5px 30px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  .wrapper ul li a:after{
+    position: absolute;
+    content: "";
+    background: #fff;
+     /*background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);*/
+    /*background: linear-gradient(375deg, #1cc7d0, #2ede98);*/
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 50px;
+    transform: scaleY(0);
+    z-index: -1;
+    transition: transform 0.3s ease;
+  }
+  .wrapper ul li a:hover:after{
+    transform: scaleY(1);
+  }
+  .wrapper ul li a:hover{
+    color: #1a73e8;
+  }
+  input[type="checkbox"]{
+    display: none;
+  }
+  .content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    text-align: center;
+    width: 100%;
+    color: #202020;
+  }
+  .content .title{
+    font-size: 40px;
+    font-weight: 700;
+  }
+  .content p{
+    font-size: 35px;
+    font-weight: 600;
+  }
+  
+  #active:checked ~ .wrapper ul li a{
+    opacity: 1;
+  }
+  .wrapper ul li a{
+    transition: opacity 1.2s, transform 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translateX(100px);
+  }
+  #active:checked ~ .wrapper ul li a{
+      transform: none;
+      transition-timing-function: ease, cubic-bezier(.1,1.3,.3,1); /* easeOutBackを緩めた感じ */
+     transition-delay: .6s;
+    transform: translateX(-100px);
+  }
+  
+
+.about0{
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .unsplash{
+        color: $first-color;
+    }
+h2{
+    padding:5px ;
+    font-size: 13px;
+}
+.button2{
+   
+   text-decoration: none; 
+   background-color: rgba(34, 32, 32, 0.801);
+    border: none;
+    color: $second-color;
+    padding: 5px;
+    margin-top: 15px;
+    border-radius: 3px 3px 3px 3px;
+   
+}
+}
+.services1{
+    padding: 80px;
+    background-color:#1d809f;
+    
+    .service1text{
+     text-align: center;
+    color: orange;
+    font-size: 25px;
+    display: block;
+    
+    
+}
+     
+
+
+
+h2{
+    font-size: xx-large;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+}
+h4{
+    margin-top: 5px;
+}
+p{
+    margin-top: 5px;
+}
+.container2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px; 
+
+    
+}
+.container{
+    display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     margin-top: 30px; 
+ }
+
+.material-symbols-outlined{
+    padding: 10px;
+    margin-bottom: 10px;
+     text-align: center;
+
+     color:#1d809f;
+     background-color: white;
+     border-radius: 50%;
+     padding: 30px;
+}
+
+.lex{
+    padding: 10px;
+    margin-bottom: 10px;
+     text-align: center;
+     color: white;
+}
+
+}
+
+
+
+
+.wel{
+    background-image: url(bg-callout.jpg);
+    background-size: cover;
+    height: 100vh;
+    background-position: right center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+h2{
+    font-size: xx-large;
+}
+.button3{
+    background-color: $button-color;
+    color: white;
+    padding: 10px;
+   text-decoration: none;
+   border-radius: 3px 3px 3px 3px;
+}
+}
+
+.port{
+   color: white;
+    padding-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+.head{
+    color: black;
+    margin-bottom: 5px;
+}
+.head2{
+    color:orange;
+    margin-top: 70px;
+}
+
+
+
+    .stationery1{
+        background-image: url(portfolio-1.jpg);
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 70vh;
+        p{
+            padding-left: 12px;
+        }
+    }
+
+    .icecream1{
+        background-image: url(portfolio-2.jpg);
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 70vh;
+        p{
+            padding-left: 12px;
+        }
+    }
+    .strawberries1{
+        background-image: url(portfolio-3.jpg);
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 70vh;
+        p{
+            padding-left: 12px;
+        }
+        
+    }
+    .workspace1{
+        background-image: url(bg-callout.jpg);
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 70vh;
+        p{
+            padding-left: 12px;
+        }
+    }
+.pictures2{
+    display: flex;
+     justify-content: center;
+    width: 90%;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    padding: 45px;
+    height: 50vh;
+    // text-align: center;
+}
+}
+
+.last{
+     padding: 80px;                 
+    background-color: #1d809f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+
+
+.buttonse{
+    margin-top: 20px;
+}
+
+
+    .button4{
+        background-color: white;
+        color: black;
+        border-radius: 3px 3px 3px 3px;
+        text-decoration: none;
+        padding: 6px;
+        margin-top: 20px;
+        width: 130px;
+         height: 50px;
+         font-size: 12px;
+        
+    }
+    
+    .button5{
+        background-color: rgb(65, 61, 61);
+        color: white;
+        margin: 15px;
+        padding: 6px;
+        border-radius: 3px 3px 3px 3px;
+        text-decoration: none;
+        width: 130px;
+        height: 50px;
+        font-size: 12px;
+    
+    }
+h3{
+    color: #fff;
+}
+
+}
+
+.map{
+    background-image: url(map2.jpg);
+    background-size: cover;
+    height: 90vh;
+    width: 100%;
+}
+
+.footer{
+    padding: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    .social-media {
+        display: flex;
+        
+      }  
+  a{
+   background-color: #1d809f;
+   border-radius: 60%;
+   padding: 20px;
+   margin: 20px;
+   color: white;
+  }
+}
+@media  screen and (min-width: 1024px) and (max-width:1366px) {
+    .banner1 h1 {
+        font-size: 50px;
+    }
+    .banner1 .para1{
+font-size: 25px;
+    }
+    .banner1{
+        height: 50vh;
+    }
+.button5{
+font-size: 25px;
+}
+.button4{
+    font-size: 25px;
+}
+.button2{
+    font-size: 27px;
+}
+.lex{
+    font-size: 20px;
+}
+    .about0 {
+        padding: 110px;
+        p{
+                font-family: sans-serif;
+                font-size: 25px;
+                text-align: center;
+            
+        }
+    }
+
+    .about0 h2 {
+        padding: 5px;
+        font-size: 28px;
+    }
+    .about0 .button2 {
+        text-decoration: none;
+        background-color: rgba(34, 32, 32, 0.801);
+        border: none;
+        color: white;
+        padding: 20px;
+        margin-top: 15px;
+        border-radius: 3px 3px 3px 3px;
+    }
+
+    .services1 {
+        padding: 80px;
+    }
+
+    .port .stationery1,
+    .port .icecream1,
+    .port .strawberries1,
+    .port .workspace1 {
+        width: 49%;
+        height: 32vh;
+    }
+
+    .pictures {
+        margin-top: 20px;
+    }
+
+    .last {
+        padding: 135px;
+    }
+    .last h3{
+        font-size: 34px;
+    }
+
+    .footer {
+        padding: 157px;
+    }
+    .last .button4
+    .last.button5{
+        padding: 25px;
+        font-size: 37px;
+    }
+.map{
+    height: 38vh;
+}
+    .footer a {
+        padding: 15px;
+        margin: 10px;
+    }
+    .port .head2 {
+        color: orange;
+        margin-top: 70px;
+        font-size: 31px;
+    }
+    .port .head {
+        color: black;
+        margin-bottom: 5px;
+        font-size: 50px;
+    }
+    .services1 .service1text {
+        text-align: center;
+        color: orange;
+        font-size: 23px;
+        display: block;
+    }
+    .banner1 .button1 {
+        text-decoration: none;
+        background-color: rgba(53, 87, 199, 0.897);
+        color: white;
+        padding: 26px;
+        margin-top: 20px;
+        border: rgba(53, 87, 199, 0.897);
+        border-radius: 3px 3px 3px 3px;
+        font-size: 33px;
+    }
+    .wel{
+        height: 50vh;
+        h2{
+            font-size: 50px;
+        }
+        .button3{
+        padding: 30px;
+        font-size: 34px;
+        }
+    }
+    .footer.social-media{
+        font-size: 40px;
+    }
+    .last .button4 {
+        background-color: white;
+        color: black;
+        border-radius: 3px 3px 3px 3px;
+        text-decoration: none;
+        padding: 6px;
+        margin-top: 20px;
+        width: 130px;
+        height: 50px;
+        font-size: 25px;
+    }
+    .last .button5 {
+        background-color: rgb(65, 61, 61);
+        color: white;
+        margin: 15px;
+        padding: 6px;
+        border-radius: 3px 3px 3px 3px;
+        text-decoration: none;
+        width: 130px;
+        height: 50px;
+        font-size: 25px;
+    }
+}
+@media only screen and (min-width: 375px) and (max-width:667px) {
+    .banner1{
+        height: 50vh;
+        h1{
+            font-size: 22px;
+        }
+        .para1{
+            font-size: 12px;
+        }
+        .button1{
+            padding: 13px;
+        }
+        
+    }
+    .about0{
+       padding: 5px;
+       h2{
+        font-size: 12px;
+    margin-top: 30px;
+       }
+       .button2{
+        margin-bottom: 29px;
+       }
+       p{
+        font-family: sans-serif;
+    text-align: center;
+    font-size: 10px;
+       }
+    }
+    .services1{
+        .container2{
+            flex-direction: column;
+        }
+        h2{
+            font-size: 29px;
+            margin-bottom: 20px;
+        }
+        .services1 .service1text {
+            text-align: center;
+            color: orange;
+            font-size: 20px;
+            display: block;
+        }
+        
+        
+
+    }
+    .wel{
+        height: 35vh;
+        h2{
+        font-size: 24px;
+        }
+        .button3{
+            padding: 10px;
+        }
+        p{
+            font-size: 10px;
+            padding: 14px;
+        }
+    }
+    .last{
+        padding: 62px;
+        h3{
+            font-size: 11px;
+            color: #fff;
+        }
+    }
+    .map{
+        height: 21vh;
+    }
+    .footer{
+        padding: 4px;
+    }
+    .port .stationery1,
+    .port .icecream1,
+    .port .strawberries1,
+    .port .workspace1 {
+        width: 100%;
+        height: 32vh;
+        margin-bottom: 10px;
+    }
+     .stationery1{
+        background-image: url(portfolio-1.jpg);
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 70vh;
+        p{
+        padding-left: 12;
+        }
+    }
+
+    .icecream1{
+        background-image: url(portfolio-2.jpg);
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 70vh;
+        p{
+            padding-left: 12px;
+        }
+    }
+    .strawberries1{
+        background-image: url(portfolio-3.jpg);
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 70vh;
+        p{
+            padding-left: 12px;
+        }
+        
+    }
+    .workspace1{
+        background-image: url(bg-callout.jpg);
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 70vh;
+        p{
+            padding-left: 12px;
+        }
+    }
+}
+@media only screen and (max-width: 1024px){
+    .footer{
+        padding:11px ;
+    }
+}
+@media screen and (min-width:768px) and (max-width:993px) {
+    .about0 h2{
+        font-size: 30px;
+    }
+    .about0{
+        p{
+            text-align: center;
+            font-size: 17px;
+            margin-top: 40px;
+        }
+        
+    }
+    .about0 .button2 {
+        text-decoration: none;
+        background-color: rgba(34, 32, 32, 0.801);
+        border: none;
+        color: white;
+        padding: 22px;
+        margin-top: 15px;
+        border-radius: 3px 3px 3px 3px;
+    }
+    .last h3{
+        color: #fff;
+        font-size: 23px;
+    }
+    .last .button4 {
+        background-color: #fff;
+        color: #000;
+        margin: 15px;
+        padding: 6px;
+        border-radius: 3px 3px 3px 3px;
+        text-decoration: none;
+        width: 130px;
+        height: 50px;
+        font-size: 24px;
+    }
+    .last .button5 {
+        background-color: rgb(65, 61, 61);
+        color: white;
+        margin: 15px;
+        padding: 6px;
+        border-radius: 3px 3px 3px 3px;
+        text-decoration: none;
+        width: 130px;
+        height: 50px;
+        font-size: 24px;
+    }
+    .map {
+        background-image: url(map2.jpg);
+        background-size: cover;
+        height: 38vh;
+        width: 100%;
+    }
+    .wel {
+        background-image: url(bg-callout.jpg);
+        background-size: cover;
+        height: 50vh;
+        background-position: right center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .port .head2 {
+        color: orange;
+        margin-top: 70px;
+        font-size: 34px;
+    }
+    .port .head {
+        color: black;
+        margin-bottom: 5px;
+        font-size: 50px;
+    }
+    .port .icecream1 {
+        background-image: url(portfolio-2.jpg);
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50vh;
+        font-size: 32px;
+        margin-bottom: 9px;
+    }
+    .port .stationery1 {
+        background-image: url(portfolio-1.jpg);
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50vh;
+        font-size: 32px;
+        margin-bottom: 9px;
+    }
+    .port .strawberries1 {
+        background-image: url(portfolio-3.jpg);
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50vh;
+        font-size: 29px;
+        margin-bottom: 9px;
+       
+    }
+    
+    .port .workspace1 {
+        background-image: url(bg-callout.jpg);
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50vh;
+        font-size: 31px;
+    }
+    .wel .button3 {
+        background-color: rgba(53, 87, 199, 0.897);
+        color: white;
+        padding: 10px;
+        text-decoration: none;
+        border-radius: 3px 3px 3px 3px;
+        font-size: 24px;
+        margin-top: 15px;
+    }
+    .banner1 .button1 {
+        text-decoration: none;
+        background-color: rgba(53, 87, 199, 0.897);
+        color: white;
+        padding: 10px;
+        margin-top: 20px;
+        border: rgba(53, 87, 199, 0.897);
+        border-radius: 3px 3px 3px 3px;
+        font-size: 27px;
+    }
+    .banner1 {
+        background-image: url(bg-masthead.jpg);
+        background-size: cover;
+        height: 65vh;
+        width: 100%;
+        background-position: left center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .last {
+        padding: 135px;
+        background-color: #1d809f;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+}
+
+    
